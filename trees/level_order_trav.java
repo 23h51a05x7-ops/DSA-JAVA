@@ -15,6 +15,7 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
+        //Storing the val in list by level ex=[[1],[2,3],[4,5,6,7]]
         List<List<Integer>> ll=new ArrayList<>();
         Queue<TreeNode> q=new LinkedList<>();
        if(root==null) return ll;
