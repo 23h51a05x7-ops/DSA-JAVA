@@ -1,0 +1,92 @@
+emergency_system/
+│
+├── app.py
+├── emergency.db (auto created)
+└── templates/
+      ├── login.html
+      ├── register.html
+      ├── dashboard.html
+      ├── admin.html
+      pip install flask
+      [22:34, 26/02/2026] $unn¥: app = Flask(_name_)
+app.secret_key = "secretkey"
+
+# ---------------------
+# DATABASE SETUP
+# ---------------------
+def init_db():
+    conn = sqlite3.connect("emergency.db")
+    c = conn.cursor()
+
+    c.execute('''CREATE TABLE IF NOT EXISTS users(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                password TEXT,
+                role TEXT)''')
+
+    c.execute('''CREATE TABLE IF NOT EXISTS alerts(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER,
+                latitude TEXT,
+                longitude TEXT,
+                time TEXT)''')
+
+    conn.commit()
+    conn.c…
+[22:34, 26/02/2026] $unn¥: <h2>Register</h2>
+<form method="POST">
+Name: <input type="text" name="name"><br><br>
+Password: <input type="password" name="password"><br><br>
+<button type="submit">Register</button>
+</form>
+<a href="/">Login</a>
+[22:35, 26/02/2026] $unn¥: <h2>Login</h2>
+<form method="POST">
+Name: <input type="text" name="name"><br><br>
+Password: <input type="password" name="password"><br><br>
+<button type="submit">Login</button>
+</form>
+<a href="/register">Register</a>
+[22:35, 26/02/2026] $unn¥: <h2>User Dashboard</h2>
+
+<button onclick="sendAlert()">🚨 PANIC BUTTON</button>
+
+<script>
+function sendAlert() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+        fetch("/send_alert", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "latitude=" + position.coords.latitude +
+                  "&longitude=" + position.coords.longitude
+        })
+        .then(response => response.text())
+        .then(data => alert(data));
+
+    });
+}
+</script>
+[22:35, 26/02/2026] $unn¥: <h2>Admin Panel - Emergency Alerts</h2>
+
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Latitude</th>
+<th>Longitude</th>
+<th>Time</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{row[0]}}</td>
+<td>{{row[1]}}</td>
+<td>{{row[2]}}</td>
+<td>{{row[3]}}</td>
+</tr>
+{% endfor %}
+
+</table>
+[22:35, 26/02/2026] $unn¥: python app.

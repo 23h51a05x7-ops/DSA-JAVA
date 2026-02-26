@@ -1,3 +1,4 @@
+package src.Arrays;
 public class wiggle_sub_seq {
         static int wiggleMaxLength(int[] nums) {
             char arr[]=new char[nums.length];

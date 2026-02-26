@@ -16,6 +16,7 @@ public class subset {
         }
         res.add(arr[i]);
         subset(arr, i+1, res,ans);
+        System.out.println(i);
         res.remove(res.size()-1);
         subset(arr, i+1, res,ans);
     }

@@ -1,3 +1,4 @@
+package src.Arrays;
 import java.util.*;
 public class max_element_in_2d_array {
     public static void main(String[] args) {
