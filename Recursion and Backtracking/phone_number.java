@@ -4,7 +4,7 @@ import java.util.List;
 
 public class phone_number {
     public static void main(String[] args) {
-        String s="234";
+        String s="23";
         System.out.println(letterCombinations(s));
     }
     public static List<String> letterCombinations(String digits) {
