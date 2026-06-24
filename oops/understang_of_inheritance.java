@@ -1,5 +1,7 @@
 package oops;
 
+import java.nio.channels.Pipe.SourceChannel;
+
 public class understang_of_inheritance {
     public static void main(String[] args) {
 
@@ -18,6 +20,8 @@ public class understang_of_inheritance {
     //     but it may access its all objects like l,h,w
     //    inheritance box6=new box_class_to_understand_inheritance(1,2,3); this will not work
     //     creating a box6 is referancing the inheritance class but the object of the box_class_to_understand_inheritance (will not work)
-    
+    Hierarchical_inheriyance obj=new Hierarchical_inheriyance(10);
+    System.out.println(obj.area);
+    System.out.println(obj.l);
     }
 }
