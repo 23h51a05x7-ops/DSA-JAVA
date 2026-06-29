@@ -5,6 +5,7 @@ import java.util.List;
 
 public class final_keyword {
     public static void main(String[] args) {
+        exceptions.divide(5, 0);
         final int a=10;
     //  a=20;this ln work
         System.out.println(a);  //get an error
